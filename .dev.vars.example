@@ -1,0 +1,3 @@
+# Copie para .dev.vars somente para desenvolvimento local.
+# Troque o valor. Na Cloudflare, cadastre SETUP_KEY como segredo de runtime.
+SETUP_KEY=defina-uma-chave-longa-para-a-organizacao
