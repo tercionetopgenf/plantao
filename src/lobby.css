@@ -1,1 +1,46 @@
 .pl-lobby{max-width:1200px;margin:auto;padding:65px 30px;display:grid;grid-template-columns:1fr 1fr;gap:45px}.pl-title>span{color:#8de7ce;letter-spacing:.13em;font-size:14px;font-weight:700}.pl-title h1{font-size:clamp(44px,6vw,72px);line-height:1.05;letter-spacing:-.04em;margin:25px 0;color:#f0fcff}.pl-title p{font-size:23px;color:#8de7ce}.pl-entry{padding:28px;background:#1b3549;border:1px solid #4d7085;box-shadow:7px 7px 0 #07141e}.pl-entry-tabs{display:flex;gap:12px;margin-bottom:25px}.pl-entry-tabs button{padding:10px 13px;font-size:14px;border:1px solid #608598;color:#bdd8e5}.pl-entry-tabs button[aria-pressed='true']{background:#63e3c2;color:#143b35}.pl-entry h2{font-size:26px;margin-bottom:13px}.pl-entry p{font-size:16px;color:#c4dae7}.pl-entry form{margin:22px 0}.pl-entry label{font-size:14px;display:block;margin-bottom:8px}.pl-entry input{width:100%;padding:13px;font-size:18px;background:#0e2638;color:#f3fbff;border:1px solid #668899;margin-bottom:18px}.pl-entry small{font-size:14px;display:block;color:#9dc4d4;margin:0 0 18px}.pl-preview{font-size:14px;text-decoration:underline;color:#9aebd3}.pl-format{grid-column:1/-1;border-top:1px solid #406278;padding-top:25px;max-width:950px}.pl-format strong{font-size:19px;color:#a7e8d7}.pl-format p{font-size:16px;color:#bdd3e1;margin:14px 0}.pl-format small{font-size:14px;color:#8eacbf}.pl-entry .pl-error{background:#713c3455;border-left:3px solid #fcb5a4;padding:13px;color:#ffd3c9;margin-bottom:18px}.hp-invites>p{font-size:16px;margin:18px 0}.hp-invites article{padding:15px;background:#1d3a4e;border:1px solid #436d7d;margin:12px 0}.hp-invites strong{display:block;font-size:16px;color:#a2edda}.hp-invites input{display:block;width:100%;padding:10px;margin:10px 0;background:#0f2738;color:#d6eaf5;font-size:14px;border:1px solid #568194}.hp-invites button{padding:8px 13px;border:1px solid #76b8a9;color:#c1efde;font-size:14px}.hp-online-error{padding:12px 30px;background:#674933;color:#ffdeba;font-size:16px;display:flex;gap:15px;justify-content:space-between}.hp-online-error button{font-size:14px;text-decoration:underline}.hp-roster button:disabled{opacity:1;cursor:default}.hp-roster button:disabled strong{text-decoration:none}.hp-host .hp-primary{margin-top:15px}.hp-spectator-note{padding:15px;border:1px solid #5b889b;background:#1d4256;font-size:14px;color:#d5e8f4}@media(max-width:760px){.pl-lobby{padding:30px 18px;grid-template-columns:1fr;gap:28px}.pl-title h1{font-size:45px}.pl-entry{padding:21px}.pl-entry-tabs{flex-wrap:wrap}.hp-online-error{padding:12px 18px}}
+
+/* Identificação acadêmica e créditos do seminário. */
+.pl-lobby{max-width:1240px;padding:36px 32px 28px;gap:34px 48px;align-items:start}
+.pl-academic{grid-column:1/-1;display:flex;align-items:center;gap:24px;padding:0 0 26px;border-bottom:1px solid #355367}
+.pl-academic img{width:72px;height:82px;object-fit:contain;flex-shrink:0}
+.pl-university{color:#e6f0f7;font-size:14px;font-weight:700;line-height:1.4}
+.pl-program{color:#a7bfce;font-size:12px;line-height:1.5;margin:3px 0 8px}
+.pl-academic h2{font-size:clamp(17px,2vw,23px);font-weight:600;line-height:1.35;max-width:780px}
+.pl-course{font-size:12px;color:#93d6c6;margin-top:8px;letter-spacing:.08em}
+.pl-course span{margin-left:12px;color:#a7bfce}
+.pl-title{padding-top:12px}
+.pl-title>.pl-eyebrow{font-size:12px;letter-spacing:.1em}
+.pl-title h1{font-size:clamp(48px,5.2vw,68px);margin:18px 0 15px;line-height:1.03}
+.pl-title .pl-tagline{font-size:22px;color:#8de7ce}
+.pl-theme{margin-top:28px;max-width:510px}
+.pl-theme h2{font-size:22px;line-height:1.35;color:#edf5fb}
+.pl-theme p{font-size:15px;color:#b8cedc;margin-top:10px;line-height:1.65}
+.pl-theme ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:17px 0 0}
+.pl-theme li{font-size:12px;color:#c1e9dd;padding:7px 10px;border:1px solid #426660;background:#193533;border-radius:5px}
+.pl-session-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;color:#a9c3d2;font-size:12px}
+.pl-session-meta span{display:flex;align-items:center;gap:7px}
+.pl-session-meta span::before{content:'';width:5px;height:5px;background:#75cdb5;border-radius:50%}
+.pl-entry{border-radius:12px;padding:28px;box-shadow:0 14px 35px #030c143d;border-color:#3e6077;background:linear-gradient(155deg,#1c394d,#182f41)}
+.pl-entry-tabs{gap:7px;padding:5px;background:#102838;border-radius:7px;margin-bottom:23px}
+.pl-entry-tabs button{flex:1;border:0;border-radius:4px;font-size:13px;padding:11px 8px}
+.pl-entry h2{font-size:24px;line-height:1.3}
+.pl-entry>p{font-size:14px;line-height:1.6}
+.pl-entry input{font-size:16px;padding:12px;border-color:#496f85;border-radius:5px}
+.pl-entry label{font-size:13px;color:#e0edf5}
+.pl-entry form{margin:20px 0}
+.pl-entry .hp-primary{width:100%;font-size:14px;min-height:46px;padding:12px 15px}
+.pl-entry small{font-size:12px}
+.pl-preview{font-size:13px;text-underline-offset:4px}
+.pl-credits{grid-column:1/-1;display:grid;grid-template-columns:1.7fr 1fr;gap:36px;border:1px solid #355367;border-radius:12px;background:#142838;padding:25px 28px}
+.pl-section-label{font-size:11px;color:#8de7ce;letter-spacing:.12em;font-weight:700;margin-bottom:8px}
+.pl-presenters h2{font-size:19px;line-height:1.4}
+.pl-presenters ul{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:18px 0 0;padding:0;list-style:none}
+.pl-presenters li{display:flex;gap:10px;align-items:baseline;font-size:13px;line-height:1.5;color:#d9e7f0}
+.pl-presenters li span{color:#74bda9;font-size:11px;font-variant-numeric:tabular-nums}
+.pl-professor{border-left:1px solid #355367;padding-left:30px}
+.pl-professor h2{font-size:20px;line-height:1.45;max-width:290px}
+.pl-professor>p:last-child{font-size:13px;color:#a9c3d2;margin-top:12px;max-width:300px}
+.pl-format{padding-top:0;border:0;max-width:none}
+.pl-format strong{font-size:15px}.pl-format p{font-size:13px;max-width:1000px;margin:9px 0}.pl-format small{font-size:12px}
+@media(max-width:760px){.pl-lobby{padding:24px 18px;gap:25px}.pl-academic{gap:15px;padding-bottom:20px}.pl-academic img{width:52px;height:60px}.pl-university{font-size:12px}.pl-program{font-size:11px}.pl-academic h2{font-size:16px}.pl-title{padding-top:0}.pl-title h1{font-size:49px}.pl-theme{margin-top:22px}.pl-entry{padding:22px}.pl-entry-tabs{flex-wrap:nowrap}.pl-credits{grid-template-columns:1fr;padding:22px;gap:23px}.pl-presenters ul{grid-template-columns:1fr;gap:11px}.pl-professor{border-left:0;border-top:1px solid #355367;padding:21px 0 0}.pl-professor h2{max-width:none;font-size:19px}.pl-session-meta{gap:10px 14px}}
