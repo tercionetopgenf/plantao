@@ -44,3 +44,12 @@
 .pl-format{padding-top:0;border:0;max-width:none}
 .pl-format strong{font-size:15px}.pl-format p{font-size:13px;max-width:1000px;margin:9px 0}.pl-format small{font-size:12px}
 @media(max-width:760px){.pl-lobby{padding:24px 18px;gap:25px}.pl-academic{gap:15px;padding-bottom:20px}.pl-academic img{width:52px;height:60px}.pl-university{font-size:12px}.pl-program{font-size:11px}.pl-academic h2{font-size:16px}.pl-title{padding-top:0}.pl-title h1{font-size:49px}.pl-theme{margin-top:22px}.pl-entry{padding:22px}.pl-entry-tabs{flex-wrap:nowrap}.pl-credits{grid-template-columns:1fr;padding:22px;gap:23px}.pl-presenters ul{grid-template-columns:1fr;gap:11px}.pl-professor{border-left:0;border-top:1px solid #355367;padding:21px 0 0}.pl-professor h2{max-width:none;font-size:19px}.pl-session-meta{gap:10px 14px}}
+.pl-entry-language{grid-column:1/-1;display:flex;justify-content:flex-end;margin-bottom:-18px}
+.pl-language{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:12px;color:#bbd2df}
+.pl-language>span{font-size:11px;letter-spacing:.06em;margin-right:5px}
+.pl-language button{padding:7px 10px;border:1px solid #52798e;border-radius:5px;white-space:nowrap;background:#142b3a;color:#c9e4ed;font-size:12px}
+.pl-language button[aria-pressed='true']{background:#63e3c2;border-color:#63e3c2;color:#143b35;font-weight:700}
+.hp-header-actions .pl-language{margin-right:6px}.hp-header-actions .pl-language>span{display:none}
+@media(max-width:760px){.pl-entry-language{margin-bottom:-9px}.hp-header-actions{flex-wrap:wrap}.hp-header-actions .pl-language{width:100%;justify-content:flex-end;margin-bottom:4px}}
+.hp-header{flex-wrap:wrap}.hp-header-actions{align-items:center;flex-wrap:wrap;gap:16px;margin-left:auto}
+@media(max-width:780px){.hp-header-actions{width:100%;justify-content:flex-end}.hp-header-actions .pl-language{width:auto;justify-content:flex-start;margin:0 auto 0 0}}

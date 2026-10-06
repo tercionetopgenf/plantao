@@ -13,7 +13,8 @@
     "deploy": "wrangler deploy",
     "check": "tsc --noEmit",
     "test": "node --experimental-strip-types tests/session.test.ts",
-    "test:runtime": "node tests/runtime.mjs"
+    "test:runtime": "node tests/runtime.mjs",
+    "test:i18n": "node --experimental-strip-types tests/i18n.test.ts"
   },
   "dependencies": {
     "react": "19.2.6",

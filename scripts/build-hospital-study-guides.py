@@ -1,4 +1,4 @@
-import json,html,subprocess
+import json,html,subprocess,sys,re
 from pathlib import Path
 from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak,Table,TableStyle,KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
@@ -11,6 +11,16 @@ root=Path(__file__).resolve().parents[1]
 # Authoring helper: reportlab and DejaVu fonts are required only to regenerate PDFs.
 content=subprocess.check_output(['node','--experimental-strip-types','--input-type=module','-e',"import {cases} from './src/lib/hospital-missions.ts';import {frameworkTopics} from './src/lib/hospital-consultant.ts';import {actors} from './src/lib/hospital-preview.ts';import {references} from './src/lib/game-data.ts';console.log(JSON.stringify({cases,frameworkTopics,actors,references}));"],cwd=root,text=True)
 data=json.loads(content)
+lang='en' if '--language=en' in sys.argv else 'pt'
+translations={}
+if lang=='en':
+ translations=json.loads(subprocess.check_output(['node','--experimental-strip-types','--input-type=module','-e',"import {english} from './src/lib/translation.ts';import {enStudy} from './src/lib/en-study.ts';console.log(JSON.stringify({...english,...enStudy}));"],cwd=root,text=True))
+pattern=re.compile('|'.join(re.escape(k) for k in sorted(translations,key=len,reverse=True))) if translations else None
+def translate(s):
+ if lang=='pt':return s
+ if s in translations:return translations[s]
+ return pattern.sub(lambda m:translations[m.group(0)],s) if pattern else s
+
 for name,file in [('Study','DejaVuSans.ttf'),('StudyBold','DejaVuSans-Bold.ttf')]:
  pdfmetrics.registerFont(TTFont(name,'/usr/share/fonts/truetype/dejavu/'+file))
 pdfmetrics.registerFontFamily('Study',normal='Study',bold='StudyBold',italic='Study',boldItalic='StudyBold')
@@ -22,8 +32,8 @@ styles.add(ParagraphStyle('HeadingStudy',fontName='StudyBold',fontSize=17,leadin
 styles.add(ParagraphStyle('SmallStudy',fontName='Study',fontSize=9,leading=13,textColor=muted,spaceAfter=8))
 styles.add(ParagraphStyle('CellStudy',fontName='Study',fontSize=9.5,leading=13,textColor=navy))
 styles.add(ParagraphStyle('CalloutStudy',fontName='Study',fontSize=10.5,leading=16,textColor=navy,backColor=colors.HexColor('#e8f3ef'),borderPadding=12,spaceBefore=7,spaceAfter=20))
-def esc(s):return html.escape(s)
-def p(s,style='BodyStudy'):return Paragraph(s,styles[style])
+def esc(s):return html.escape(translate(s))
+def p(s,style='BodyStudy'):return Paragraph(translate(s),styles[style])
 def text(s,style='BodyStudy'):return p(esc(s),style)
 def table(rows,widths):
  t=Table([[p(esc(v),'CellStudy') for v in row] for row in rows],colWidths=widths,hAlign='LEFT')
@@ -31,7 +41,7 @@ def table(rows,widths):
  return t
 def footer(canvas,doc):
  canvas.saveState();canvas.setStrokeColor(colors.HexColor('#a4c6c0'));canvas.line(44,43,A4[0]-44,43)
- canvas.setFont('Study',8);canvas.setFillColor(muted);canvas.drawString(44,29,'Plantão da Mudança • Grupo 5 • Resumo para estudo')
+ canvas.setFont('Study',8);canvas.setFillColor(muted);canvas.drawString(44,29,translate('Plantão da Mudança • Grupo 5 • Resumo para estudo'))
  canvas.drawRightString(A4[0]-44,29,str(doc.page));canvas.restoreState()
 slugs=['aurora','nexo','pulsar']
 focus=[
@@ -69,7 +79,7 @@ for i,c in enumerate(data['cases']):
    ref=next(r for r in data['references'] if r['url']==source['url'])
    story.append(KeepTogether([p('<b>'+esc(source['label'])+'</b>. '+esc(ref['title'])+'. '+esc(ref['journal']),'SmallStudy'),text('Localizador: '+source['where'],'SmallStudy'),p('<link href="'+esc(source['url'])+'" color="#207766">'+esc(source['url'])+'</link>','SmallStudy')]))
  story.append(text('Material preparado com auxílio de inteligência artificial. A leitura das fontes e a análise acadêmica permanecem com docentes e discentes.','SmallStudy'))
- file=root/'public/hospital-preview'/('resumo-'+slugs[i]+'.pdf')
- doc=SimpleDocTemplate(str(file),pagesize=A4,rightMargin=44,leftMargin=44,topMargin=43,bottomMargin=58,title='Resumo de estudo — '+actor['name'],author='Hospital Horizonte | Seminário do Grupo 5')
+ file=root/'public/hospital-preview'/('resumo-'+slugs[i]+('-en' if lang=='en' else '')+'.pdf')
+ doc=SimpleDocTemplate(str(file),pagesize=A4,rightMargin=44,leftMargin=44,topMargin=43,bottomMargin=58,title=translate('Resumo de estudo — '+actor['name']),author=translate('Hospital Horizonte | Seminário do Grupo 5'))
  doc.build(story,onFirstPage=footer,onLaterPages=footer)
  print(file)
